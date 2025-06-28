@@ -4,8 +4,15 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { dummyInterviews } from '@/constants'
 import InterviewCard from '@/components/InterviewCard'
+import { getCurrentUser, getInterviewByUserId } from '@/lib/actions/auth.actions'
 
-const page = () => {
+const page = async() => {
+
+  const user = await getCurrentUser();
+  const userInterviews = await getInterviewByUserId(user?.id!);
+
+  const hasPastInterviews = userInterviews?.length>0;
+
   return (
     <>
       <section className="card-cta">
