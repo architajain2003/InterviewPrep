@@ -1,23 +1,18 @@
-import React from 'react'
-import Agent from '@/components/Agents'
-import { getCurrentUser } from '@/lib/actions/auth.actions'
+// "use client";
 
-// interface AgentProps {
-//   userName: string;
-//   userId: string;
-//   type: "generate" | "somethingElse"; // use actual valid values
-// }
+import React from "react";
+import Agents from "@/components/Agents";
+import { getCurrentUser } from "@/lib/actions/auth.actions";
 
-const Page = async() => {
-
+const Page = async () => {
   const user = await getCurrentUser();
 
   return (
     <>
-    <h3>Interview Generation</h3>
-    <Agent userName={user?.name} userId={user?.id} type="generate"></Agent>
+      <h3>Interview Generation</h3>
+      <Agents userName={user?.name || ""} userId={user?.id} type="generate" />
     </>
-  )
-}
+  );
+};
 
-export default Page
+export default Page;
