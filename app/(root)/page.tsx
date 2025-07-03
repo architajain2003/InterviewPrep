@@ -6,9 +6,11 @@ import { dummyInterviews } from "@/constants";
 import InterviewCard from "@/components/InterviewCard";
 import {
   getCurrentUser,
+} from "@/lib/actions/auth.actions";
+import {
   getInterviewByUserId,
   getLatestInterviews,
-} from "@/lib/actions/auth.actions";
+} from "@/lib/actions/general.action";
 
 const page = async () => {
   const user = await getCurrentUser();
